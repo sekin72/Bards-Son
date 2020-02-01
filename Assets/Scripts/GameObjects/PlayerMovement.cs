@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Player Player;
     public CharacterController CharacterController;
 
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
-    public Transform GroundCheck;
-    public float GroundDistance = 0.4f;
-
     private Vector3 velocity;
     private bool isGrounded;
 
+    private void Awake()
+    {
+        Player = GetComponent<Player>();
+    }
     void Update()
     {
         if (!GameManager.Instance.IsWaitingForInputForText)
         {
-            RaycastHit hit = new RaycastHit();
-            isGrounded = Physics.SphereCast(GroundCheck.position, GroundDistance, Vector3.down, out hit, GroundDistance * 3, 9);
-
             if (isGrounded && velocity.y < 0)
                 velocity.y = -2f;
 
@@ -30,6 +29,14 @@ public class PlayerMovement : MonoBehaviour
             float z = Input.GetAxis("Vertical");
 
             Vector3 move = transform.right * x + transform.forward * z;
+            if (x == 0 && z == 00)
+            {
+                Player.StartIdleAnim();
+            }
+            else
+            {
+                Player.StartRunningAnim();
+            }
 
             CharacterController.Move(move * speed * Time.deltaTime);
 
@@ -40,5 +47,18 @@ public class PlayerMovement : MonoBehaviour
 
             CharacterController.Move(velocity * Time.deltaTime);
         }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag.Equals("Ground"))
+            isGrounded = true;
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Ground"))
+            isGrounded = false;
     }
 }

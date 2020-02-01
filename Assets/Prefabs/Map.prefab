@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 5283503752236632665}
   m_Layer: 9
   m_Name: map_1:polySurface1156_map_1:terrain_map_1:polySurface1_group1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -749,7 +749,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5698687586795570243, guid: 89c9ce4e4dbd25c43923c4fc9d53887e, type: 3}
 --- !u!1 &6745505015615701064

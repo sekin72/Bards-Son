@@ -98,36 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
   PlayerBody: {fileID: 290214906432648492}
---- !u!1 &290214905848146358
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 290214905848146353}
-  m_Layer: 11
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &290214905848146353
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290214905848146358}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 290214906432648492}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290214906432648498
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +130,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 290214905813962642}
-  - {fileID: 290214905848146353}
   - {fileID: 155104165169605553}
   - {fileID: 5652597881552860990}
   m_Father: {fileID: 0}
@@ -200,8 +169,6 @@ MonoBehaviour:
   speed: 15
   gravity: -9.81
   jumpHeight: 2.5
-  GroundCheck: {fileID: 290214905848146353}
-  GroundDistance: 0.4
 --- !u!114 &290214906432648489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 290214906432648492}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4698751435041517724
 Animator:
@@ -545,7 +512,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 85151d258417cc14db78eaf4cecb1515,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 85151d258417cc14db78eaf4cecb1515,
         type: 3}
