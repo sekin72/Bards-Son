@@ -31,11 +31,13 @@ public class PlayerAttack : MonoBehaviour
         _cooldown -= Time.deltaTime;
 
         if (_cooldown <= 0)
+        {
+            _cooldown = _cooldownMax;
             if (FRPSystem.RollD20(_player.attackBonus, enemy.AC))
             {
                 enemy.Hurt(_player.damageBonus);
-                _cooldown = _cooldownMax;
             }
+        }
     }
 
     private void OnDrawGizmosSelected()

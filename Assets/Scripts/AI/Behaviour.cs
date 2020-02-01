@@ -5,26 +5,26 @@ using UnityEngine.AI;
 
 public class Behaviour : MonoBehaviour
 {
-    public CharacterController CharacterController;
-    public BehaviourState State;
     protected Enemy enemy;
-    protected Player player;
-    private void Awake()
+
+    private void Start()
     {
         enemy = GetComponent<Enemy>();
-        player = GetComponent<Player>();
     }
 
-    protected Vector3 _targetDir, _destinationPos;
     protected NavMeshPath _navMeshPath;
     protected int _cornerIndex = 0;
     bool flag = false;
 
     protected void CalculatePath(Vector3 targetPos)
     {
-        _destinationPos = targetPos;
+        enemy._destinationPos = targetPos;
         NavMesh.CalculatePath(transform.position, targetPos, NavMesh.AllAreas, _navMeshPath);
+
+        //while (_navMeshPath.status == NavMeshPathStatus.PathInvalid)
+        //    NavMesh.CalculatePath(transform.position, targetPos, NavMesh.AllAreas, _navMeshPath);
     }
+
     protected void Move(Color color)
     {
         if (_navMeshPath.status.Equals(NavMeshPathStatus.PathComplete))
@@ -36,21 +36,13 @@ public class Behaviour : MonoBehaviour
                 Debug.DrawLine(_navMeshPath.corners[i + 1], _navMeshPath.corners[i], color);
             }
 
-            if (_navMeshPath.corners.Length == 0 && !flag)
-            {
-                var obj = Resources.Load("Prefabs/deneme");
-                var gameobj = (GameObject)Instantiate(obj);
-                gameobj.transform.position = _destinationPos;
-                flag = true;
-            }
-
-            _targetDir = (_navMeshPath.corners[_cornerIndex]);
-            transform.position = Vector3.MoveTowards(transform.position, _targetDir, step);
+            enemy._targetDir = (_navMeshPath.corners[_cornerIndex]);
+            transform.position = Vector3.MoveTowards(transform.position, enemy._targetDir, step);
 
             /*Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, 1, 1);
             transform.rotation = Quaternion.LookRotation(newDir);*/
 
-            if (Vector3.Distance(transform.position, _targetDir) < 0.01f)
+            if (Vector3.Distance(transform.position, enemy._targetDir) < 0.01f)
             {
                 _cornerIndex++;
                 if (_cornerIndex > _navMeshPath.corners.Length - 1)
@@ -59,10 +51,9 @@ public class Behaviour : MonoBehaviour
                 }
             }
         }
-        else if (_navMeshPath.corners.Length == 0 && GetType().ToString().Equals("Patrol"))
+        else if (_navMeshPath.corners.Length == 0 && enemy.State == BehaviourState.Patrol)
         {
-            var patrolBeh = GetComponent<Patrol>();
-            patrolBeh.SetNewRandomDestionationAroundShop();
+            enemy.PatrolBehaviour.SetNewRandomDestionationAroundShop();
         }
     }
     public virtual void OnBehaviourChange() { }

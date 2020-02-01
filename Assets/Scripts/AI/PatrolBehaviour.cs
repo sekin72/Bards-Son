@@ -7,39 +7,32 @@ public class PatrolBehaviour : Behaviour
 {
     public override void OnBehaviourChange()
     {
-        StartPatrol();
+        enemy.State = BehaviourState.Patrol;
     }
-
-    private void StartPatrol()
-    {
-        CharacterController.Move(DecideNextPosition());
-    }
-
-    private Vector3 DecideNextPosition()
-    {
-        return Vector3.zero;
-    }
-
-
 
     private float _patrolRadius = 10f;
-    public Vector3 ShopPos;
 
     private void Update()
     {
-        if (enabled)
+        if (enemy.State == BehaviourState.Patrol)
         {
-            if (ShopPos != null && Vector3.Distance(transform.position, _destinationPos) < 0.01f)
+            if (Vector3.Distance(transform.position, enemy._destinationPos) < 0.01f)
             {
                 SetNewRandomDestionationAroundShop();
             }
             Move(Color.red);
+            Collider[] enemies = Physics.OverlapSphere(transform.position, _patrolRadius, enemy._playerLayer);
+            for (int i = 0; i < enemies.Length; i++)
+
+            {
+                enemy.MoveTowardsEnemyBehaviour.OnBehaviourChange();
+            }
         }
     }
 
     public void SetNewRandomDestionationAroundShop()
     {
-        Vector3 newDestination = RandomNavSphere(ShopPos, _patrolRadius);
+        Vector3 newDestination = RandomNavSphere(enemy.StartPos, _patrolRadius);
 
         if (newDestination.Equals(Vector3.zero))
         {
