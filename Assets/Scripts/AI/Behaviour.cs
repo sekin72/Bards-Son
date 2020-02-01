@@ -5,17 +5,17 @@ using UnityEngine.AI;
 
 public class Behaviour : MonoBehaviour
 {
-    protected Enemy enemy;
-
-    private void Start()
-    {
-        enemy = GetComponent<Enemy>();
-    }
-
+    public Enemy enemy;
+    
     protected NavMeshPath _navMeshPath;
     protected int _cornerIndex = 0;
     bool flag = false;
 
+    private void OnEnable()
+    {
+        _navMeshPath = new NavMeshPath();
+        _cornerIndex = 0;
+    }
     protected void CalculatePath(Vector3 targetPos)
     {
         enemy._destinationPos = targetPos;

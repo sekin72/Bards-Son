@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class MoveTowardsEnemyBehaviour : Behaviour
 {
+    private Player _player;
     public override void OnBehaviourChange()
     {
         enemy.State = BehaviourState.MoveTowardsEnemy;
-        MoveTowardsEnemy();
     }
 
-    private void MoveTowardsEnemy()
+    private void Awake()
     {
-        SendToLocation(FindPlayerPosition());
+        _player = FindPlayerPosition();
     }
 
     private void Update()
     {
         if (enemy.State == BehaviourState.MoveTowardsEnemy)
         {
-            if (Vector3.Distance(transform.position, enemy._destinationPos) < 0.01f)
+            if (Vector3.Distance(transform.position, _player.transform.position) < 0.01f)
             {
                 enemy.AttackBehaviour.OnBehaviourChange();
             }
+            SendToLocation(_player.transform.position);
             Move(Color.red);
         }
     }
@@ -32,9 +33,9 @@ public class MoveTowardsEnemyBehaviour : Behaviour
         CalculatePath(targetPos);
     }
 
-    private Vector3 FindPlayerPosition()
+    private Player FindPlayerPosition()
     {
-        return GameObject.FindGameObjectWithTag("Player").transform.position;
+        return GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
 }

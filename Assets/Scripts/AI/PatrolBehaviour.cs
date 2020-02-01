@@ -23,7 +23,6 @@ public class PatrolBehaviour : Behaviour
             Move(Color.red);
             Collider[] enemies = Physics.OverlapSphere(transform.position, _patrolRadius, enemy._playerLayer);
             for (int i = 0; i < enemies.Length; i++)
-
             {
                 enemy.MoveTowardsEnemyBehaviour.OnBehaviourChange();
             }
