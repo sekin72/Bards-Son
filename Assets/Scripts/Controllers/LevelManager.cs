@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         _player = _levelData.Player.GetComponent<Player>();
-        Instantiate(_player);
+        //Instantiate(_player);
 
         _enemies = new List<Enemy>();
         for (int i = 0; i < _levelData.Enemies.Count; i++)

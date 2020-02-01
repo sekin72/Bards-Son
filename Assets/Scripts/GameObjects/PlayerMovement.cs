@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!GameManager.Instance.IsWaitingForInputForText)
         {
-            isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, 9);
+            RaycastHit hit = new RaycastHit();
+            isGrounded = Physics.SphereCast(GroundCheck.position, GroundDistance, Vector3.down, out hit, GroundDistance * 3, 9);
 
             if (isGrounded && velocity.y < 0)
                 velocity.y = -2f;
