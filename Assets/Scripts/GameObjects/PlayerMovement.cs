@@ -14,22 +14,27 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    private float _cooldown = 0f, _cooldownMax = 4f;
+
+    private Enemy enemy;
+
     private void Awake()
     {
         Player = GetComponent<Player>();
     }
+
     void Update()
     {
         if (!GameManager.Instance.IsWaitingForInputForText)
         {
             if (isGrounded && velocity.y < 0)
-                velocity.y = -2f;
+                velocity.y = -5f;
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
             Vector3 move = transform.right * x + transform.forward * z;
-            if (x == 0 && z == 00)
+            if (x == 0 && z == 00 && !Player.AttackStarted)
             {
                 Player.StartIdleAnim();
             }
@@ -46,6 +51,21 @@ public class PlayerMovement : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
 
             CharacterController.Move(velocity * Time.deltaTime);
+
+
+            _cooldown += Time.deltaTime;
+            if (Input.GetMouseButtonDown(0))
+            {
+                GetComponent<Player>().StartAttackAnim();
+                if (_cooldown >= _cooldownMax && enemy != null)
+                {
+                    _cooldown = 0;
+                    if (FRPSystem.RollD20(Player.attackBonus, enemy.AC))
+                    {
+                        enemy.Hurt(FRPSystem.RollDamage(Player.DamageDie, Player.damageBonus));
+                    }
+                }
+            }
         }
     }
 
@@ -53,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (hit.gameObject.tag.Equals("Ground"))
             isGrounded = true;
+        if (hit.gameObject.tag.Equals("Enemy"))
+        {
+            enemy = hit.gameObject.GetComponent<Enemy>();
+            if (enemy == null)
+                enemy = hit.gameObject.GetComponentInParent<Enemy>();
+        }
     }
 
 
@@ -60,5 +86,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Ground"))
             isGrounded = false;
+        if (collision.gameObject.tag.Equals("Enemy"))
+        {
+            enemy = null;
+        }
     }
 }

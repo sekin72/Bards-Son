@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelIndex: 1
   Player: {fileID: 290214906432648498, guid: 95bc91dd1391e2b4399039e3f40ceae6, type: 3}
-  Enemies:
-  - {fileID: 1085505198188366275, guid: 146c506d8c254b04f8b9610e715e5990, type: 3}
+  Enemies: []

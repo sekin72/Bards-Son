@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    public Animator Animator;
+
     public PatrolBehaviour PatrolBehaviour;
     public MoveTowardsEnemyBehaviour MoveTowardsEnemyBehaviour;
     public AttackBehaviour AttackBehaviour;
@@ -26,6 +28,6 @@ public class Enemy : Character
     }
     protected override void Die()
     {
-
+        gameObject.SetActive(false);
     }
 }

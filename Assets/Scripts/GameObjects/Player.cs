@@ -10,7 +10,6 @@ public class Player : Character
 
     protected override void Die()
     {
-
     }
 
     public void StartIdleAnim()
@@ -43,9 +42,16 @@ public class Player : Character
         if (!AttackStarted)
         {
             IdleStarted = false;
-            RunningStarted = true;
+            RunningStarted = false;
             AttackStarted = true;
-            Animator.Play("Attacking", 0, 0);
+            Animator.Play("Attack", 0, 0);
+            StartCoroutine(WaitUntilAnimFinish());
         }
+    }
+
+    private IEnumerator WaitUntilAnimFinish()
+    {
+        yield return new WaitForSeconds(4);
+        StartIdleAnim();
     }
 }
