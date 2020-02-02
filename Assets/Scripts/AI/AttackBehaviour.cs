@@ -34,7 +34,7 @@ public class AttackBehaviour : Behaviour
                     enemies[0].GetComponent<Player>().Hurt(FRPSystem.RollDamage(enemy.DamageDie, enemy.damageBonus));
                 }
             }
-            if (Vector3.Distance(transform.position, _player.transform.position) > 2.3f)
+            if (Vector3.Distance(transform.position, _player.transform.position) > 3f)
             {
                 enemy.MoveTowardsEnemyBehaviour.OnBehaviourChange();
             }

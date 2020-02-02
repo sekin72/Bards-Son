@@ -9,7 +9,6 @@ public class Behaviour : MonoBehaviour
     
     protected NavMeshPath _navMeshPath;
     protected int _cornerIndex = 0;
-    bool flag = false;
 
     private void OnEnable()
     {

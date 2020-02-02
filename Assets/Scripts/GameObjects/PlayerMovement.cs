@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Player.StartIdleAnim();
             }
-            else
+            else if (!Player.AttackStarted)
             {
                 Player.StartRunningAnim();
             }

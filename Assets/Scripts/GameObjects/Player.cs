@@ -16,13 +16,13 @@ public class Player : Character
     {
         if (!IdleStarted)
         {
+            IdleStarted = true;
+            RunningStarted = false;
+            AttackStarted = false;
             if (Courage)
                 Animator.Play("Idle", 0, 0);
             else
                 Animator.Play("Terrified", 0, 0);
-            IdleStarted = true;
-            RunningStarted = false;
-            AttackStarted = false;
         }
     }
 
@@ -51,7 +51,7 @@ public class Player : Character
 
     private IEnumerator WaitUntilAnimFinish()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2.2f);
         StartIdleAnim();
     }
 }

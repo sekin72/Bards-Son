@@ -24,11 +24,6 @@ public class MoveTowardsEnemyBehaviour : Behaviour
     {
         if (enemy.State == BehaviourState.MoveTowardsEnemy)
         {
-            var x = Vector3.Distance(transform.position, _player.transform.position);
-            if (x < 2.3f)
-            {
-                enemy.AttackBehaviour.OnBehaviourChange();
-            }
             counter += Time.deltaTime;
             if (counter >= timer)
             {
@@ -37,6 +32,12 @@ public class MoveTowardsEnemyBehaviour : Behaviour
                 SendToLocation(newDestination);
             }
             Move(Color.red);
+
+            var x = Vector3.Distance(transform.position, _player.transform.position);
+            if (x < 3f)
+            {
+                enemy.AttackBehaviour.OnBehaviourChange();
+            }
         }
     }
     private Vector3 RandomNavSphere(Vector3 originPos, float dist)

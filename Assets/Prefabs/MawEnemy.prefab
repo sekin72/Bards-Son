@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7437599726510750855}
   - component: {fileID: 7464444304651900819}
   - component: {fileID: -3747028611062943567}
-  - component: {fileID: 1380844264}
+  - component: {fileID: 1722770566}
   m_Layer: 10
   m_Name: MawEnemy
   m_TagString: Enemy
@@ -130,8 +130,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
---- !u!64 &1380844264
-MeshCollider:
+--- !u!136 &1722770566
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -140,10 +140,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Radius: 0.5840902
+  m_Height: 2.7087677
+  m_Direction: 1
+  m_Center: {x: -0.08409019, y: 0.85438347, z: -6.0825277e-16}
 --- !u!1 &1306291507773502727
 GameObject:
   m_ObjectHideFlags: 0

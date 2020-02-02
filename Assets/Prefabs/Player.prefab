@@ -168,7 +168,6 @@ MonoBehaviour:
   speed: 10
   gravity: -9.81
   jumpHeight: 2.5
-  AttackGranted: 0
 --- !u!114 &290214906432648489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
-  AC: 15
-  attackBonus: 3
-  damageBonus: 1
+  AC: 17
+  attackBonus: 5
+  damageBonus: 2
   DamageDie: 1
   Animator: {fileID: 4698751435041517724}
   Courage: 0
