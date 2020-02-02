@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 411404394}
   m_Layer: 0
   m_Name: Cube (14)
-  m_TagString: Obstacle
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -515,7 +515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411404393}
   m_LocalRotation: {x: 0.000000008774248, y: 0.728931, z: -0.000000006819333, w: 0.68458724}
-  m_LocalPosition: {x: -56.1, y: 3.7, z: 21.5}
+  m_LocalPosition: {x: -72.6, y: 3.7, z: 21.5}
   m_LocalScale: {x: 111.82284, y: 77.024704, z: 59.80215}
   m_Children: []
   m_Father: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 956493270}
   m_Layer: 0
   m_Name: Cube (13)
-  m_TagString: Obstacle
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

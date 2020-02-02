@@ -63,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
                     if (FRPSystem.RollD20(Player.attackBonus, enemy.AC))
                     {
                         enemy.Hurt(FRPSystem.RollDamage(Player.DamageDie, Player.damageBonus));
+                        if (!enemy.gameObject.activeInHierarchy)
+                            enemy = null;
                     }
                 }
             }
@@ -94,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GameManager.Instance.AfterCheckpoint && other.gameObject.tag.Equals("Obstacle"))
+        if (GameManager.Instance.AfterCheckpoint && other.gameObject.tag.Equals("Checkpoint"))
         {
             GameManager.Instance.AbandonText();
         }
