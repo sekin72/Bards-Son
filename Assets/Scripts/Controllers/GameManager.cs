@@ -31,12 +31,8 @@ public class GameManager : MonoBehaviour
 
         PopulateTexts();
 
-        IsWaitingForInputForText = true;
-        Player.camera.gameObject.SetActive(false);
-        mainCamera.gameObject.SetActive(true);
-
-        currentText = MyTextList[0];
-        ImageText.text = currentText.DisplayText;
+        textCounter = -1;
+        ShowNextText();
     }
 
     public void KillEnemy()
@@ -72,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void PopulateTexts()
     {
-        MyTextList.Add(new Text("Welcome to Bard's son. This game tells a story about a half-elf, Alcraes. Game uses tabletop FRP mechanics, meaning it rolls 4,6,8 or 20 sided dice to determine the gameplay or scenario outcomes. Press any key to continue...", ShowNextText));
+        MyTextList.Add(new Text("Welcome to Bard's son. This game tells a story about a half-elf, Alcraes. Game uses tabletop FRP mechanics, meaning it rolls 4,6,8 or 20 sided dice to determine the gameplay or scenario outcomes. Press right click to continue...", ShowNextText));
         MyTextList.Add(new Text("Alcraes lives with her mother in a human only populated village. " +
             "His story actually is not strange to us. His mother is loved and respected in the village. One day, a known bard comes to town and a love sprout between them. " +
             "Sadly, he can't be found the next day. Only thing that he left was his bastard sword. After Alcraes was born, he was exluded by others because he was a half-elf.",

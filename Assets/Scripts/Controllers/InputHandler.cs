@@ -8,7 +8,7 @@ public class InputHandler : MonoBehaviour
     {
         if (GameManager.Instance.IsWaitingForInputForText)
         {
-            if (Input.anyKeyDown)
+            if (Input.GetMouseButtonDown(1))
             {
                 GameManager.Instance.currentText.AfterChoice();
             }
