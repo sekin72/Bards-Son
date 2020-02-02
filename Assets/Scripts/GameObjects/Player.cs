@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : Character
 {
     public Animator Animator;
+    public Camera camera;
     public bool Courage = false;
     public bool IdleStarted, RunningStarted, AttackStarted;
 
     protected override void Die()
     {
+        GameManager.Instance.Die();
     }
 
     public void StartIdleAnim()

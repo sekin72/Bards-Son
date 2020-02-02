@@ -29,5 +29,6 @@ public class Enemy : Character
     protected override void Die()
     {
         gameObject.SetActive(false);
+        GameManager.Instance.KillEnemy();
     }
 }

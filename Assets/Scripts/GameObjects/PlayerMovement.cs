@@ -91,4 +91,12 @@ public class PlayerMovement : MonoBehaviour
             enemy = null;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (GameManager.Instance.AfterCheckpoint && other.gameObject.tag.Equals("Obstacle"))
+        {
+            GameManager.Instance.AbandonText();
+        }
+    }
 }
