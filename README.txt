@@ -1,3 +1,1 @@
-Create a new Unity project (Prefer Unity 2019.3)
-Replace the assets folder with the one inside the zip
-Enjoy :)
+This game was made in GGJ 2020, under 48 hours with one developer and 2 artists.
